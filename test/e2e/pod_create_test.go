@@ -1070,7 +1070,7 @@ ENTRYPOINT ["sleep","99999"]
 		podData := podInspect.InspectPodToJSON()
 		Expect(podData.Mounts[0]).To(HaveField("Name", volName))
 
-		ctr2 := podmanTest.Podman([]string{"run", "--pod", podName, ALPINE, "sh", "-c", "echo hello >> " + "/tmp1/test"})
+		ctr2 := podmanTest.Podman([]string{"run", "--pod", podName, ALPINE, "sh", "-c", "echo hello >> /tmp1/test"})
 		ctr2.WaitWithDefaultTimeout()
 		Expect(ctr2).Should(ExitCleanly())
 
